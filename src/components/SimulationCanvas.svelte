@@ -1,6 +1,6 @@
 <script lang="ts">
     import {onMount} from "svelte";
-    import {Boundary, Point} from "./simulation/simulation";
+    import {Boundary, Point} from "../simulation/simulation";
 
     export let width = 400;
     export let height = 400;
