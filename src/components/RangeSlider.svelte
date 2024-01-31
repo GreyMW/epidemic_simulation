@@ -1,15 +1,11 @@
 <script lang="ts">
-    // let value = 50;
-    export let bound_value: number;
-
-    $: bound_value, value_changed();
-    function value_changed() {
-        console.log(bound_value);
-    }
+       export let value: number = 50;
+       export let min = 1;
+       export let max = 100;
 
 </script>
 
-<input type="range" min="1" max="100" bind:value={bound_value} >
+<input type="range" {min} {max} bind:value={value} >
 
 <style>
 

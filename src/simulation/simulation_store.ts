@@ -4,6 +4,7 @@ import {Point} from "./simulation";
 class State {
     animation_on: boolean = false;
     points: State[] = [];
+    population: number = 10;
 
     constructor() {
     }
@@ -12,8 +13,10 @@ class State {
 let simulation_state = () => {
     let state: State = new State();
 
+    //svelte store methods
     const {subscribe, set, update} = writable(state);
 
+    //state methods
     const methods = {
         reset() {
             update( state => {
@@ -29,6 +32,13 @@ let simulation_state = () => {
             })
         },
 
+        set_population(population: number) {
+            update((state) => {
+                state.population = population;
+                return state;
+            })
+        }
+
 
 
     }
@@ -40,3 +50,5 @@ let simulation_state = () => {
         ...methods
     }
 }
+
+export default simulation_state();

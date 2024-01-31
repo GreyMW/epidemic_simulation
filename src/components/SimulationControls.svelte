@@ -1,21 +1,35 @@
 <script lang="ts">
 
+    import simulation_state from "../simulation/simulation_store";
     import RangeSlider from "./RangeSlider.svelte";
 
-    let population = 10;
-
-    $: console.log("Population: " + population)
+    $: console.log("From Store " + $simulation_state.population);
 
 </script>
 
 <div class = "container">
     <p>Simulation Controls</p>
-    <RangeSlider bound_value={population}/>
+
+    <div class="slider">
+        <p>Population&nbsp;</p>
+        <p class="slider-value">{$simulation_state.population}</p>
+        <RangeSlider bind:value = {$simulation_state.population}/>
+    </div>
+
+    <RangeSlider/>
 
 </div>
 
 <style>
     .container {
         background-color: red;
+    }
+
+    .slider {
+        display: flex;
+    }
+
+    .slider-value {
+        width: 25px;
     }
 </style>
