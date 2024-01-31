@@ -3,7 +3,7 @@
     import simulation_state from "../simulation/simulation_store";
     import RangeSlider from "./RangeSlider.svelte";
 
-    $: console.log("From Store " + $simulation_state.population);
+    // $: console.log("From Store " + $simulation_state.population);
 
 </script>
 

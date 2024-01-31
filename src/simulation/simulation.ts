@@ -61,4 +61,12 @@ export class Boundary {
         this.y_max = y_max;
     }
 
+
+
+}
+
+export class BoundaryFactory {
+    public scenario_1_boundaries(): Boundary[] {
+        return [new Boundary(0, 400, 0, 400)];
+    }
 }

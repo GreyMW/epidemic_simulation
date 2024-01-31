@@ -1,10 +1,15 @@
 import {writable} from "svelte/store";
-import {Point} from "./simulation";
+import {Boundary, BoundaryFactory, Point} from "./simulation";
 
 class State {
     animation_on: boolean = false;
-    points: State[] = [];
+    points: Point[] = [];
     population: number = 10;
+    boundary_factory: BoundaryFactory = new BoundaryFactory();
+    boundaries: Boundary[] = this.boundary_factory.scenario_1_boundaries();
+    scenario: String = "default";
+    canvas_width: number = 400;
+    canvas_height: number = 400;
 
     constructor() {
     }
@@ -37,9 +42,50 @@ let simulation_state = () => {
                 state.population = population;
                 return state;
             })
+        },
+
+        update_points() {
+            update ((state) => {
+                for (let point of state.points) {
+                    point.x_coord += point.velocity_x;
+                    point.y_coord += point.velocity_y;
+
+                    point.check_x_bounds();
+                    point.check_y_bounds();
+                }
+                return state;
+            })
+        },
+
+        clear_points() {
+            update((state) => {
+                state.points = [];
+                return state;
+            })
+        },
+
+        add_point() {
+            update((state) => {
+                if (state.scenario === "default") {
+                    state.points.push(new Point(state.boundaries[0]));
+                }
+
+                return state;
+            })
+        },
+
+        create_points() {
+            update((state) => {
+                for (let i = 0; i < state.population; i++) {
+                    this.add_point();
+                }
+                return state;
+            })
+        },
+
+        get_points() {
+            return state.points;
         }
-
-
 
     }
 
