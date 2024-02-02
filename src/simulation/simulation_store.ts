@@ -4,7 +4,10 @@ import {Boundary, BoundaryFactory, Point} from "./simulation";
 class State {
     animation_on: boolean = false;
     points: Point[] = [];
+
     population: number = 10;
+    r_value: number = 20;
+
     boundary_factory: BoundaryFactory = new BoundaryFactory();
     boundaries: Boundary[] = this.boundary_factory.scenario_1_boundaries();
     scenario: String = "default";
