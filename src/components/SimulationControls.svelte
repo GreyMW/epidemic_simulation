@@ -22,6 +22,12 @@
         <RangeSlider bind:value = {$simulation_state.r_value}/>
     </div>
 
+    <div class="slider">
+        <p>Social Distancing Strength&nbsp;</p>
+        <p class="slider-value">{$simulation_state.social_distancing_factor+ "%"}</p>
+        <RangeSlider min={0} bind:value = {$simulation_state.social_distancing_factor}/>
+    </div>
+
     <RangeSlider/>
 
 </div>

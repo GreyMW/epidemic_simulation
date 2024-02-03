@@ -7,6 +7,7 @@ class State {
 
     population: number = 10;
     r_value: number = 20;
+    social_distancing_factor: number = 50;
 
     boundary_factory: BoundaryFactory = new BoundaryFactory();
     boundaries: Boundary[] = this.boundary_factory.scenario_1_boundaries();
